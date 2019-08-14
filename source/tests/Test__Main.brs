@@ -13,7 +13,7 @@
 '     TestCase__Main_CheckStreamFormatType
 '     TestCase__Main_TestAddPrefixFunction__Failed
 '     TestCase__Main_TestAddPrefixFunction__Passed
-
+'     TestCase__Main_GetStreamUrlsContent
 '----------------------------------------------------------------
 ' Main setup function.
 '
@@ -37,6 +37,7 @@ Function TestSuite__Main() as Object
     this.addTest("TestAddPrefixFunction__Failed", TestCase__Main_TestAddPrefixFunction__Failed)
     this.addTest("TestAddPrefixFunction__Passed", TestCase__Main_TestAddPrefixFunction__Passed)
     this.addTest("TestComparesAssociativeArrays", TestCase__Main_TestComparesAssociativeArrays)
+    this.addTest("GetStreamUrlsContent", TestCase__Main_GetStreamUrlsContent)
     this.addTest("TestComparesArrays", TestCase__Main_TestComparesArrays)
 
     return this
@@ -60,6 +61,28 @@ Sub MainTestSuite__TearDown()
     ' Remove all the test data
     m.Delete("mainData")
 End Sub
+
+
+Function TestCase__Main_GetStreamUrlsContent() as string
+ stop
+  inputObject = {}
+
+  m.VideoGrid.StreamUrls("https://rokuott.blob.core.windows.net/rokuott/telethon_2011.mp4")
+ stop
+  return "ok"
+End Function
+
+
+sub TestCase__Main_GetStreamUrlsContent_TearDown()
+    ? "--- TestCase__Main_GetStreamUrlsContent Test TearDown function"
+end sub
+
+
+Function TestCase__ObjectEquals() as Boolean
+
+return BTS__AssertEqual({test:"test"}, m.targetTestObject)
+
+End Function
 
 '----------------------------------------------------------------
 ' Check if data has an expected amount of items
