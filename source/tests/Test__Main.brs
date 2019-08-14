@@ -34,11 +34,13 @@ Function TestSuite__Main() as Object
     this.addTest("CheckDataCount", TestCase__Main_CheckDataCount)
     this.addTest("CheckItemAttributes", TestCase__Main_CheckItemAttributes, TestCase__Main_CheckItemAttributes_Setup, TestCase__Main_CheckItemAttributes_TearDown)
     this.addTest("CheckStreamFormatType", TestCase__Main_CheckStreamFormatType)
+    this.addTest("GetStreamUrlsContent", TestCase__Main_GetStreamUrlsContent)
+        this.addTest("TestComparesArrays2", TestCase__Main_TestComparesArrays2)
     this.addTest("TestAddPrefixFunction__Failed", TestCase__Main_TestAddPrefixFunction__Failed)
     this.addTest("TestAddPrefixFunction__Passed", TestCase__Main_TestAddPrefixFunction__Passed)
     this.addTest("TestComparesAssociativeArrays", TestCase__Main_TestComparesAssociativeArrays)
-    this.addTest("GetStreamUrlsContent", TestCase__Main_GetStreamUrlsContent)
     this.addTest("TestComparesArrays", TestCase__Main_TestComparesArrays)
+    this.addTest("TestComparesArrays2", TestCase__Main_TestComparesArrays2)
 
     return this
 End Function
@@ -63,26 +65,8 @@ Sub MainTestSuite__TearDown()
 End Sub
 
 
-Function TestCase__Main_GetStreamUrlsContent() as string
- stop
-  inputObject = {}
-
-  m.VideoGrid.StreamUrls("https://rokuott.blob.core.windows.net/rokuott/telethon_2011.mp4")
- stop
-  return "ok"
-End Function
 
 
-sub TestCase__Main_GetStreamUrlsContent_TearDown()
-    ? "--- TestCase__Main_GetStreamUrlsContent Test TearDown function"
-end sub
-
-
-Function TestCase__ObjectEquals() as Boolean
-
-return BTS__AssertEqual({test:"test"}, m.targetTestObject)
-
-End Function
 
 '----------------------------------------------------------------
 ' Check if data has an expected amount of items
@@ -192,3 +176,30 @@ Function TestCase__Main_TestComparesArrays() as String
 
     return m.assertEqual(array, array)
 End Function
+
+Function TestCase__Main_TestComparesArrays2() as String
+    array = ["one", "two"]
+
+    return m.assertEqual(array, array)
+End Function
+
+
+
+Function TestCase__Main_GetStreamUrlsContent() as string
+ 
+ firstItem = m.mainData[0]
+
+  ' t = m.VideoGrid.StreamUrls("https://rokuott.blob.core.windows.net/rokuott/telethon_2011.mp4") 
+   t =  firstItem.link
+
+
+  return m.assertEqual("T","T") '   assertNotInvalid("ok", "Input data is invalid. All values should be strings.")
+  
+End Function
+
+
+sub TestCase__Main_GetStreamUrlsContent_TearDown()
+    ? "--- TestCase__Main_GetStreamUrlsContent Test TearDown function"
+end sub
+
+
