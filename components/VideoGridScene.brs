@@ -43,6 +43,9 @@ function LiveUrls() as Object
     return {
     live1   : "https://rokuott.blob.core.windows.net/rokuott/telethon_2011.mp4"
     }
+    
+    ''  Change to your live stream 
+    
 end function
 
 function getGridContent() as Object
